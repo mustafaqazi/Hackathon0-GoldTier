@@ -1,0 +1,98 @@
+{
+  "mcpServers": {
+    "email": {
+      "name": "Email MCP Server",
+      "description": "Handles email operations: send, draft, schedule, list, search",
+      "command": "node",
+      "args": ["mcp_servers/email_mcp.js"],
+      "env": {
+        "GMAIL_API_KEY": "${GMAIL_API_KEY}",
+        "GMAIL_API_SECRET": "${GMAIL_API_SECRET}",
+        "OUTLOOK_TOKEN": "${OUTLOOK_TOKEN}",
+        "SMTP_HOST": "${SMTP_HOST}",
+        "SMTP_PORT": "${SMTP_PORT}",
+        "SMTP_USER": "${SMTP_USER}",
+        "SMTP_PASS": "${SMTP_PASS}"
+      },
+      "methods": [
+        "email.send",
+        "email.draft",
+        "email.schedule",
+        "email.list",
+        "email.search"
+      ],
+      "enabled": true,
+      "timeout": 30000,
+      "retries": 3
+    },
+    "social": {
+      "name": "Social Media MCP Server",
+      "description": "Handles social media operations: post, schedule, analytics, engage",
+      "command": "node",
+      "args": ["mcp_servers/social_mcp.js"],
+      "env": {
+        "FACEBOOK_ACCESS_TOKEN": "${FACEBOOK_ACCESS_TOKEN}",
+        "FACEBOOK_PAGE_ID": "${FACEBOOK_PAGE_ID}",
+        "INSTAGRAM_ACCESS_TOKEN": "${INSTAGRAM_ACCESS_TOKEN}",
+        "INSTAGRAM_BUSINESS_ACCOUNT_ID": "${INSTAGRAM_BUSINESS_ACCOUNT_ID}",
+        "X_API_KEY": "${X_API_KEY}",
+        "X_API_SECRET": "${X_API_SECRET}",
+        "X_ACCESS_TOKEN": "${X_ACCESS_TOKEN}",
+        "X_ACCESS_TOKEN_SECRET": "${X_ACCESS_TOKEN_SECRET}",
+        "LINKEDIN_ACCESS_TOKEN": "${LINKEDIN_ACCESS_TOKEN}",
+        "LINKEDIN_ORG_ID": "${LINKEDIN_ORG_ID}"
+      },
+      "methods": [
+        "social.post",
+        "social.schedule",
+        "social.analytics",
+        "social.engage",
+        "social.scheduled",
+        "social.delete"
+      ],
+      "enabled": true,
+      "timeout": 30000,
+      "retries": 3,
+      "platforms": ["facebook", "instagram", "x", "linkedin"]
+    },
+    "browser": {
+      "name": "Browser Automation MCP Server",
+      "description": "Handles web automation: navigate, click, type, screenshot, scrape",
+      "command": "node",
+      "args": ["mcp_servers/browser_mcp.js"],
+      "env": {
+        "BROWSER_HEADLESS": "${BROWSER_HEADLESS}",
+        "BROWSER_TIMEOUT": "${BROWSER_TIMEOUT}"
+      },
+      "methods": [
+        "browser.createSession",
+        "browser.navigate",
+        "browser.click",
+        "browser.type",
+        "browser.screenshot",
+        "browser.content",
+        "browser.extract",
+        "browser.scrape",
+        "browser.wait",
+        "browser.setCookies",
+        "browser.closeSession",
+        "browser.listSessions"
+      ],
+      "enabled": true,
+      "timeout": 60000,
+      "retries": 2
+    }
+  },
+  "routing": {
+    "email_actions": ["email.send", "email.draft", "email.schedule", "email.list", "email.search"],
+    "social_actions": ["social.post", "social.schedule", "social.analytics", "social.engage", "social.scheduled", "social.delete"],
+    "browser_actions": ["browser.createSession", "browser.navigate", "browser.click", "browser.type", "browser.screenshot", "browser.content", "browser.extract", "browser.scrape", "browser.wait", "browser.setCookies", "browser.closeSession", "browser.listSessions"]
+  },
+  "metadata": {
+    "version": "1.0.0",
+    "tier": "Gold",
+    "createdAt": "2026-03-01T22:35:00Z",
+    "updated": "2026-03-01T22:35:00Z",
+    "description": "Multi-MCP Server Configuration for Gold Tier AI Employee"
+  }
+}
